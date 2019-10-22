@@ -7,9 +7,13 @@
 
 using namespace pitch_classifier;
 
-Pitch::Pitch(std::string label, double velocity, double spin,
-             double break_x, double break_z,
-             double release_x, double release_z) : 
+Pitch::Pitch(){
+  
+}
+
+Pitch::Pitch(const std::string label, const double velocity, const double spin,
+             const double break_x, const double break_z,
+             const double release_x, const double release_z) : 
     label(label), velocity(velocity), spin(spin), 
     break_x(break_x), break_z(break_z), 
     release_x(release_x), release_z(release_z) {}
@@ -51,65 +55,65 @@ Pitch::Pitch(std::string data_file_line) {
 }
 
 // getters and setters
-std::string Pitch::get_label() {
+const std::string Pitch::get_label() {
   return this->label;
 }
 
-void Pitch::set_label(std::string label) {
+void Pitch::set_label(const std::string label) {
   this->label = label;
 }
 
-double Pitch::get_velocity() {
+const double Pitch::get_velocity() {
   return this->velocity;
 }
 
-void Pitch::set_velocity(double velocity) {
+void Pitch::set_velocity(const double velocity) {
   this->velocity = velocity;
 }
 
-double Pitch::get_spin() {
+const double Pitch::get_spin() {
   return this->spin;
 }
 
-void Pitch::set_spin(double spin) {
+void Pitch::set_spin(const double spin) {
   this->spin = spin;
 }
 
-double Pitch::get_break_x() {
+const double Pitch::get_break_x() {
   return this->break_x;
 }
 
-void Pitch::set_break_x(double break_x) {
+void Pitch::set_break_x(const double break_x) {
   this->break_x = break_x;
 }
 
 
-double Pitch::get_break_z() {
+const double Pitch::get_break_z() {
   return this->break_z;
 }
 
-void Pitch::set_break_z(double break_z) {
+void Pitch::set_break_z(const double break_z) {
   this->break_z = break_z;
 }
 
 
-double Pitch::get_release_x() {
+const double Pitch::get_release_x() {
   return this->release_x;
 }
 
-void Pitch::set_release_x(double release_x) {
+void Pitch::set_release_x(const double release_x) {
   this->release_x = release_x;
 }
 
-double Pitch::get_release_z() {
+const double Pitch::get_release_z() {
   return this->release_z;
 }
 
-void Pitch::set_release_z(double release_z) {
+void Pitch::set_release_z(const double release_z) {
   this->release_z = release_z;
 }
 
-std::vector<double> Pitch::vector() {
+const std::vector<double> Pitch::vector() {
   std::vector<double> v;
   v.push_back(this->velocity);
   v.push_back(this->spin);
