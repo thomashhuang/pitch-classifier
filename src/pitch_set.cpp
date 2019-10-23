@@ -6,11 +6,15 @@
 
 using namespace pitch_classifier;
 
-void add_pitch(const Pitch& p) {
+void PitchSet::add_pitch(const Pitch& p) {
   
 }
 
-PitchSet* generate_test_set(const int size) {
+size_t PitchSet::size() {
+  return 0;
+}
+ 
+PitchSet* PitchSet::generate_test_set(int size) {
   return NULL;
 }
   

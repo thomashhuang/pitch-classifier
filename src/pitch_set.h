@@ -11,9 +11,9 @@ namespace pitch_classifier {
    public:
     void add_pitch(const Pitch& p);
 
-    const size_t size();
+    size_t size();
 
-    PitchSet generate_test_set(const int size);
+    PitchSet* generate_test_set(int size);
 
    private:
     std::vector<Pitch> pitches;
