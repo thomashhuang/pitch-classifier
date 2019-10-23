@@ -1,15 +1,12 @@
+#include "pitch.h"
+
 #include <fstream>
 #include <sstream>
 #include <string>
 #include <vector>
 
-#include "pitch.h"
 
 using namespace pitch_classifier;
-
-Pitch::Pitch(){
-  
-}
 
 Pitch::Pitch(const std::string label, const double velocity, const double spin,
              const double break_x, const double break_z,
