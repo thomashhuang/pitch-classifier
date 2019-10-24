@@ -1,6 +1,7 @@
 #include "pitch_set.h"
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <vector>
 
 #include "pitch.h"
@@ -27,7 +28,7 @@ PitchSet* PitchSet::generate_test_set(size_t size) {
   PitchSet* test_set = new PitchSet();
 
   for (size_t i = 0; i < size; i++) {
-    size_t index_to_remove = (size_t) (rand() * this->pitches.size());
+    size_t index_to_remove = rand() % this->pitches.size();
 
     Pitch& p = this->pitches[index_to_remove];
     test_set->add_pitch(p);
