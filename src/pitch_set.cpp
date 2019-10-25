@@ -39,3 +39,10 @@ PitchSet* PitchSet::generate_test_set(size_t size) {
   return test_set;
 }
   
+std::vector<std::string>* PitchSet::get_labels() {
+  std::vector<std::string>* labels = new std::vector<std::string>();
+  for (size_t i = 0; i < this->size(); i++) {
+    labels->push_back(this->pitches[i].get_label());
+  }
+  return labels;
+}

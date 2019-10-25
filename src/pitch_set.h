@@ -23,6 +23,12 @@ namespace pitch_classifier {
      */
     PitchSet* generate_test_set(size_t size);
 
+    /**
+     * Instantiates a vector of strings representing the labels of each pitch in this set.
+     * Vector is allocated on the heap and must be deleted after use
+     */
+    std::vector<std::string>* get_labels();
+
    private:
     std::vector<Pitch> pitches;
   };
