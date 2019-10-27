@@ -1,9 +1,10 @@
+#ifndef PITCH_SET_H
+#define PITCH_SET_H
+
 #include <vector>
 
 #include "pitch.h"
 
-#ifndef PITCH_SET_H
-#define PITCH_SET_H
 
 
 namespace pitch_classifier {
@@ -15,6 +16,8 @@ namespace pitch_classifier {
 
     size_t size();
 
+    Pitch& at(size_t n);
+
     Pitch& operator[](size_t n);
 
     /**
@@ -23,11 +26,7 @@ namespace pitch_classifier {
      */
     PitchSet* generate_test_set(size_t size);
 
-    /**
-     * Instantiates a vector of strings representing the labels of each pitch in this set.
-     * Vector is allocated on the heap and must be deleted after use
-     */
-    std::vector<std::string>* get_labels();
+    std::vector<std::string> get_labels();
 
    private:
     std::vector<Pitch> pitches;

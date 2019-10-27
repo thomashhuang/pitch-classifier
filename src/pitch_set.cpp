@@ -20,6 +20,10 @@ size_t PitchSet::size() {
   return this->pitches.size();
 }
 
+Pitch& PitchSet::at(size_t n) {
+  return this->pitches.at(n);
+}
+
 Pitch& PitchSet::operator[](size_t n) {
   return this->pitches[n];
 }
@@ -30,7 +34,7 @@ PitchSet* PitchSet::generate_test_set(size_t size) {
   for (size_t i = 0; i < size; i++) {
     size_t index_to_remove = rand() % this->pitches.size();
 
-    Pitch& p = this->pitches[index_to_remove];
+    Pitch p = this->pitches[index_to_remove];
     test_set->add_pitch(p);
 
     this->pitches.erase(this->pitches.begin() + index_to_remove);
@@ -39,10 +43,10 @@ PitchSet* PitchSet::generate_test_set(size_t size) {
   return test_set;
 }
   
-std::vector<std::string>* PitchSet::get_labels() {
-  std::vector<std::string>* labels = new std::vector<std::string>();
+std::vector<std::string> PitchSet::get_labels() {
+  std::vector<std::string> labels;
   for (size_t i = 0; i < this->size(); i++) {
-    labels->push_back(this->pitches[i].get_label());
+    labels.push_back(this->pitches[i].get_label());
   }
   return labels;
 }

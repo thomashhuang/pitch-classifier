@@ -79,9 +79,8 @@ TEST_CASE("PITCH_SET::get_labels") {
   s.add_pitch(p1);
   s.add_pitch(p2);
   s.add_pitch(p3);
-  std::vector<std::string>* labels = s.get_labels();
-  REQUIRE(labels->at(0) == "FF");
-  REQUIRE(labels->at(1) == "CH");
-  REQUIRE(labels->at(2) == "KC");
-  delete(labels);
+  std::vector<std::string> labels = s.get_labels();
+  REQUIRE(labels[0] == "FF");
+  REQUIRE(labels[1] == "CH");
+  REQUIRE(labels[2] == "KC");
 }
