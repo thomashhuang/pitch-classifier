@@ -29,6 +29,16 @@ std::vector<double> MathUtils::add(const std::vector<double>& v1, const std::vec
   return sum;
 }
 
+void MathUtils::add_in_place(std::vector<double>& v1, const std::vector<double>& v2) {
+  if (v1.size() != v2.size()) {
+    std::cerr << "Invalid dimensions for vector addition" << std::endl;
+    throw 0;
+  }
+  for (size_t i = 0; i < v1.size(); i++) {
+    v1[i] += v2[i];
+  }
+}
+
 std::vector<double> MathUtils::subtract(const std::vector<double>& v1, const std::vector<double>& v2) {
   if (v1.size() != v2.size()) {
     std::cerr << "Invalid dimensions for vector subtraction" << std::endl;
@@ -39,6 +49,16 @@ std::vector<double> MathUtils::subtract(const std::vector<double>& v1, const std
     sum.push_back(v1[i] - v2[i]);
   }
   return sum;
+}
+
+void MathUtils::subtract_in_place(std::vector<double>& v1, const std::vector<double>& v2) {
+  if (v1.size() != v2.size()) {
+    std::cerr << "Invalid dimensions for vector subtraction" << std::endl;
+    throw 0;
+  }
+  for (size_t i = 0; i < v1.size(); i++) {
+    v1[i] -= v2[i];
+  }
 }
 
 std::vector<double> MathUtils::scale(const std::vector<double>& v1, double factor) {

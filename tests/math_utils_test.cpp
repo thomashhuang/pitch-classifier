@@ -32,6 +32,21 @@ TEST_CASE("MATH_UTILS::add_invalid_dimensions") {
   REQUIRE_THROWS(MathUtils::add(v1, v2));
 }
 
+TEST_CASE("MATH_UTILS::add_in_place_value") {
+  std::vector<double> v1{1, 2, 3};
+  std::vector<double> v2{2, 3, 4};
+  MathUtils::add_in_place(v1, v2);
+  REQUIRE(v1[0] == 3);
+  REQUIRE(v1[1] == 5);
+  REQUIRE(v1[2] == 7);
+}
+
+TEST_CASE("MATH_UTILS::add_in_place_invalid_dimensions") {
+  std::vector<double> v1{2, 3};
+  std::vector<double> v2{2, 3, 4};
+  REQUIRE_THROWS(MathUtils::add_in_place(v1, v2));
+}
+
 TEST_CASE("MATH_UTILS::subtract_value") {
   std::vector<double> v1{1, 2, 3};
   std::vector<double> v2{2, 1, 0};
@@ -45,6 +60,21 @@ TEST_CASE("MATH_UTILS::subtract_invalid_dimensions") {
   std::vector<double> v1{2, 3};
   std::vector<double> v2{2, 3, 4};
   REQUIRE_THROWS(MathUtils::subtract(v1, v2));
+}
+
+TEST_CASE("MATH_UTILS::subtract_in_place_value") {
+  std::vector<double> v1{1, 2, 3};
+  std::vector<double> v2{2, 1, 0};
+  MathUtils::subtract_in_place(v1, v2);
+  REQUIRE(v1[0] == -1);
+  REQUIRE(v1[1] == 1);
+  REQUIRE(v1[2] == 3);
+}
+
+TEST_CASE("MATH_UTILS::subtract_in_place_invalid_dimensions") {
+  std::vector<double> v1{2, 3};
+  std::vector<double> v2{2, 3, 4};
+  REQUIRE_THROWS(MathUtils::subtract_in_place(v1, v2));
 }
 
 TEST_CASE("MATH_UTILS::scale_value") {
