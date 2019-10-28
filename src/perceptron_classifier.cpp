@@ -21,10 +21,15 @@ void PerceptronClassifier::train(PitchSet* training_data) {
   // initialize perceptron weights including bias
   size_t outer_dim = this->repertoire.size();
   size_t inner_dim = training_data->at(0).vector().size() + 1; // add one for bias term
-
+  for (size_t i = 0; i < outer_dim; i++) {
+    std::vector<double> v;
+    for (size_t j = 0; j < inner_dim; j++) {
+      v.push_back(0.0);
+    }
+    this->weights.push_back(v);
+  }
   
-  // loop until eta=0
-  // Add a bias term of 1 to the end of feature vectors of pitches
+  // train the weight vectors
   double eta = 1;
   const double LEARNING_RATE = .00001;
   size_t correct_streak = 0;
@@ -35,7 +40,7 @@ void PerceptronClassifier::train(PitchSet* training_data) {
       i = 0;
     }
     if (correct_streak == training_data->size()) {
-      break; // found correct boundaries, only happens if data is linearly seperable
+      return; // found correct boundaries, only happens if data is linearly seperable
     }
 
     Pitch& p = training_data->at(i);
