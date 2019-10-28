@@ -17,6 +17,8 @@ namespace pitch_classifier {
     static void subtract_in_place(std::vector<double>& v1, const std::vector<double>& v2);
 
     static std::vector<double> scale(const std::vector<double>& v1, double factor);
+
+    static void scale_in_place(std::vector<double>& v1, double factor);
     
   };
 }

@@ -1,5 +1,6 @@
 #include "perceptron_classifier.h"
 
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -31,17 +32,15 @@ void PerceptronClassifier::train(PitchSet* training_data) {
   
   // train the weight vectors
   double eta = 1;
-  const double LEARNING_RATE = .00001;
+  const double LEARNING_RATE = .0000005;
   size_t correct_streak = 0;
 
   size_t i = 0;
   while (eta >= 0) {
-    if (i == training_data->size()) {
+    if (i == training_data->size())
       i = 0;
-    }
-    if (correct_streak == training_data->size()) {
+    if (correct_streak == training_data->size())
       return; // found correct boundaries, only happens if data is linearly seperable
-    }
 
     Pitch& p = training_data->at(i);
     size_t classified_index = this->classify_index(p);
@@ -50,10 +49,10 @@ void PerceptronClassifier::train(PitchSet* training_data) {
     if (classified_index != actual_index) {
       std::vector<double> adjustment = p.vector();
       adjustment.push_back(1.0); // bias
-      MathUtils::scale(adjustment, eta);
+      MathUtils::scale_in_place(adjustment, eta);
 
       MathUtils::add_in_place(this->weights[actual_index], adjustment);
-      MathUtils::subtract_in_place(this->weights[actual_index], adjustment);
+      MathUtils::subtract_in_place(this->weights[classified_index], adjustment);
 
       eta -= LEARNING_RATE;
       correct_streak = 0;
@@ -62,13 +61,21 @@ void PerceptronClassifier::train(PitchSet* training_data) {
     }
     i++;
   }
+
+  for (size_t i = 0; i < outer_dim; i++) {
+    std::cout << this->repertoire[i] << ": ";
+    for (size_t j = 0; j < inner_dim; j++) {
+      std::cout << this->weights[i][j] << " ";
+    }
+    std::cout << std::endl;
+  }
 }
 
 std::vector<std::string> PerceptronClassifier::test(PitchSet* test_data) const {
   std::vector<std::string> labels;
-  for (size_t i = 0; i < test_data->size(); i++) {
+  for (size_t i = 0; i < test_data->size(); i++)
     labels.push_back(this->classify(test_data->at(i)));
-  }
+
   return labels;
 }
 
@@ -92,7 +99,7 @@ size_t PerceptronClassifier::classify_index(const Pitch& p) const {
   return best_classification;
 }
 
-size_t PerceptronClassifier::pitch_index(std::string label) const {
+int PerceptronClassifier::pitch_index(std::string label) const {
   for (size_t i = 0; i < this->repertoire.size(); i++) {
     if (label == this->repertoire[i])
       return i;

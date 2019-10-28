@@ -68,3 +68,9 @@ std::vector<double> MathUtils::scale(const std::vector<double>& v1, double facto
   }
   return scaled;
 }
+
+void MathUtils::scale_in_place(std::vector<double>& v1, double factor) {
+  for (size_t i = 0; i < v1.size(); i++) {
+    v1[i] *= factor;
+  }
+}

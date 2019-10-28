@@ -12,11 +12,11 @@
 namespace pitch_classifier {
   class PerceptronClassifier : public Classifier {
    public:
-    void train(PitchSet* training_data);
+    virtual void train(PitchSet* training_data);
 
-    std::vector<std::string> test(PitchSet* test_data) const;
+    virtual std::vector<std::string> test(PitchSet* test_data) const;
 
-    std::string classify(const Pitch& p) const;
+    virtual std::string classify(const Pitch& p) const;
 
    private:
     std::vector<std::string> repertoire;
@@ -25,7 +25,7 @@ namespace pitch_classifier {
 
     size_t classify_index(const Pitch& p) const;
 
-    size_t pitch_index(std::string label) const;
+    int pitch_index(std::string label) const;
 
   };
 }

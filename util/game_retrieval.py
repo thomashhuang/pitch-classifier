@@ -39,6 +39,7 @@ for game in game_ids:
 full_pitch_history = pd.concat(game_dfs, ignore_index=True)
 full_pitch_history = full_pitch_history[full_pitch_history.des != "Intent Walk"]
 full_pitch_history = full_pitch_history[["mlbam_pitch_name", "start_speed", "spin", "pfx_x", "pfx_z", "x0", "z0"]]
+full_pitch_history = full_pitch_history.dropna()
 
 data_path = "../data/{}.csv".format(formatted_name.replace("+", "_"))
 

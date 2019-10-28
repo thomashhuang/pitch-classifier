@@ -13,9 +13,9 @@ namespace pitch_classifier {
    public:
     virtual void train(PitchSet* training_data) = 0;
 
-    virtual std::vector<std::string> test(PitchSet* test_data) = 0;
+    virtual std::vector<std::string> test(PitchSet* test_data) const = 0;
 
-    virtual std::string classify(const Pitch& p) = 0;
+    virtual std::string classify(const Pitch& p) const = 0;
   };
 }
 
