@@ -37,6 +37,6 @@ $(TEST): $(TEST_OBJS)
 
 clean:
 	$(RM) $(OBJS) $(EXE_OBJ) $(EXE) $(TEST_OBJS)
-	rm data/reader_test_data.csv
+	rm -f data/reader_test_data.csv
 	rm -f tests/*.o
 	rm -f test
