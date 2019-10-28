@@ -5,7 +5,7 @@ MAIN_FILE = src/main.cpp
 
 CPP_FILES +=$(wildcard src/*.cpp)
 
-OBJS += $(src/CPP_FILES:.cpp=.o)
+OBJS += $(CPP_FILES:.cpp=.o)
 
 TEST_FILES += $(filter-out $(MAIN_FILE), $(CPP_FILES))
 TEST_FILES += $(wildcard tests/*.cpp)
@@ -39,4 +39,4 @@ clean:
 	$(RM) $(OBJS) $(EXE_OBJ) $(EXE) $(TEST_OBJS)
 	rm data/reader_test_data.csv
 	rm -f tests/*.o
-	rm test
+	rm -f test
