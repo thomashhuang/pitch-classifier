@@ -45,7 +45,7 @@ Pitch::Pitch(const std::string& data_file_line) {
 }
 
 // getters and setters
-std::string Pitch::get_label() {
+std::string Pitch::get_label() const {
   return this->label;
 }
 
@@ -53,7 +53,7 @@ void Pitch::set_label(const std::string& label) {
   this->label = label;
 }
 
-double Pitch::get_velocity() {
+double Pitch::get_velocity() const {
   return this->velocity;
 }
 
@@ -61,7 +61,7 @@ void Pitch::set_velocity(double velocity) {
   this->velocity = velocity;
 }
 
-double Pitch::get_spin() {
+double Pitch::get_spin() const {
   return this->spin;
 }
 
@@ -69,7 +69,7 @@ void Pitch::set_spin(double spin) {
   this->spin = spin;
 }
 
-double Pitch::get_break_x() {
+double Pitch::get_break_x() const {
   return this->break_x;
 }
 
@@ -78,7 +78,7 @@ void Pitch::set_break_x(double break_x) {
 }
 
 
-double Pitch::get_break_z() {
+double Pitch::get_break_z() const {
   return this->break_z;
 }
 
@@ -87,7 +87,7 @@ void Pitch::set_break_z(double break_z) {
 }
 
 
-double Pitch::get_release_x() {
+double Pitch::get_release_x() const {
   return this->release_x;
 }
 
@@ -95,7 +95,7 @@ void Pitch::set_release_x(double release_x) {
   this->release_x = release_x;
 }
 
-double Pitch::get_release_z() {
+double Pitch::get_release_z() const {
   return this->release_z;
 }
 
@@ -103,7 +103,7 @@ void Pitch::set_release_z(const double release_z) {
   this->release_z = release_z;
 }
 
-std::vector<double> Pitch::vector() {
+std::vector<double> Pitch::vector() const {
   std::vector<double> v;
   v.push_back(this->velocity);
   v.push_back(this->spin);

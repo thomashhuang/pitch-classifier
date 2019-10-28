@@ -1,8 +1,8 @@
 #ifndef PERCEPTRON_CLASSIFIER_H
 #define PERCEPTRON_CLASSIFIER_H
 
-#include <map>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 #include "classifier.h"
@@ -12,23 +12,21 @@
 namespace pitch_classifier {
   class PerceptronClassifier : public Classifier {
    public:
-    PerceptronClassifier();
-
-    PerceptronClassifier(double learning_rate);
-
     void train(PitchSet* training_data);
 
-    std::vector<std::string> test(PitchSet* test_data);
+    std::vector<std::string> test(PitchSet* test_data) const;
 
-    std::string classify(Pitch p);
+    std::string classify(const Pitch& p) const;
 
    private:
+    std::vector<std::string> repertoire;
 
-    std::map<int, std::string> repertoire;
+    std::vector<std::vector<double> > weights;
 
-    double learning_rate;
-   
-    
+    size_t classify_index(const Pitch& p) const;
+
+    size_t pitch_index(std::string label) const;
+
   };
 }
 

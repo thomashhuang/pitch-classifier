@@ -15,7 +15,7 @@ namespace pitch_classifier {
 
     virtual std::vector<std::string> test(PitchSet* test_data) = 0;
 
-    virtual std::string classify(Pitch p) = 0;
+    virtual std::string classify(const Pitch& p) = 0;
   };
 }
 
