@@ -85,4 +85,14 @@ TEST_CASE("MATH_UTILS::scale_value") {
   REQUIRE(scaled[2] == 6);
 }
 
+TEST_CASE("MATH_UTILS::euclidean_distance_value") {
+  std::vector<double> v1{3, 4};
+  std::vector<double> v2{0, 0};
+  REQUIRE(MathUtils::euclidean_distance(v1, v2) == 5.0);
+}
 
+TEST_CASE("MATH_UTILS::euclidean_distance_invalid_dimensions") {
+  std::vector<double> v1{2, 3};
+  std::vector<double> v2{2, 3, 4};
+  REQUIRE_THROWS(MathUtils::euclidean_distance(v1, v2));
+}

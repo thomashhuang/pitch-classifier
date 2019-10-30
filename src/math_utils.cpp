@@ -1,5 +1,6 @@
 #include "math_utils.h"
 
+#include <math.h>
 #include <iostream>
 #include <vector>
 
@@ -73,4 +74,16 @@ void MathUtils::scale_in_place(std::vector<double>& v1, double factor) {
   for (size_t i = 0; i < v1.size(); i++) {
     v1[i] *= factor;
   }
+}
+
+double MathUtils::euclidean_distance(const std::vector<double>& v1, const std::vector<double>& v2) {
+  if (v1.size() != v2.size()) {
+    std::cerr << "Invalid dimensions for vector euclidean distance." << std::endl;
+    throw 0;
+  }
+  double distance = 0.0;
+  for (size_t i = 0; i < v1.size(); i++) {
+    distance += (v1[i] - v2[i]) * (v1[i] - v2[i]);
+  }
+  return sqrt(distance);
 }

@@ -19,6 +19,8 @@ namespace pitch_classifier {
     static std::vector<double> scale(const std::vector<double>& v1, double factor);
 
     static void scale_in_place(std::vector<double>& v1, double factor);
+
+    static double euclidean_distance(const std::vector<double>& v1, const std::vector<double>& v2);
     
   };
 }
