@@ -32,7 +32,7 @@ void PerceptronClassifier::train(PitchSet* training_data) {
   
   // train the weight vectors
   double eta = 1;
-  const double LEARNING_RATE = .0000005;
+  const double LEARNING_RATE = .000005;
   size_t correct_streak = 0;
 
   size_t i = 0;

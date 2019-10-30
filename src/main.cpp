@@ -9,13 +9,26 @@
 
 using namespace pitch_classifier;
 
-int main() {
-  std::string path = "data/kyle_hendricks.csv";
+int main(int argc, const char* argv[]) {
+
+  if (argc != 3) {
+    return -1;
+  }
+  std::string first_name = std::string(argv[1]);
+  std::string last_name = std::string(argv[2]);
+  for (size_t i = 0; i < first_name.length(); i++) {
+    first_name[i] = tolower(first_name[i]);
+  }
+  for (size_t i = 0; i < last_name.length(); i++) {
+    last_name[i] = tolower(last_name[i]);
+  }
+
+  std::string path = "data/" + first_name + "_" + last_name + ".csv";
   DataFileReader d;
   PitchSet* data = d.generate_pitch_set(path);
 
   std::cout << "Generating test set." << std::endl;
-  PitchSet* test_data = data->generate_test_set(1500);
+  PitchSet* test_data = data->generate_test_set(data->size() / 10);
 
   Classifier* c = new PerceptronClassifier();
 
@@ -33,7 +46,9 @@ int main() {
       correct++;
   }
 
+  double accuracy = (double) correct / double(actual_labels.size()) * 100.0;
   std::cout << correct << "/" << actual_labels.size() << std::endl;
+  std::cout << accuracy << "%" << std::endl;
 
   delete(data);
   delete(test_data);
