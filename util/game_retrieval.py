@@ -13,7 +13,7 @@ pid_end = r.text.index('"', pid_begin)
 pid = r.text[pid_begin:pid_end]
 
 # Get a list of all the games they have pitched with Pitchf/x data available
-r = requests.get("http://www.brooksbaseball.net/tabs.php?player={}&p_hand=-1&ppos=-1&cn=200&compType=none&gFilt=&time=month&minmax=ci&var=gl&s_type=2&startDate=03/30/2008&endDate=10/17/2019&balls=-1&strikes=-1&b_hand=-1".format(pid))
+r = requests.get("http://www.brooksbaseball.net/tabs.php?player={}&p_hand=-1&ppos=-1&cn=200&compType=none&gFilt=&time=month&minmax=ci&var=gl&s_type=2&startDate=03/25/2008&endDate=10/17/2019&balls=-1&strikes=-1&b_hand=-1".format(pid))
 
 fx_url_base = "http://www.brooksbaseball.net/pfxVB/tabdel_expanded.php?pitchSel={}&game={}/&s_type=3&h_size=700&v_size=500"
 
